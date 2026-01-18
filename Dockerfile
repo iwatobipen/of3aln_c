@@ -22,7 +22,7 @@ RUN wget -P /tmp \
     "https://github.com/conda-forge/miniforge/releases/download/25.11.0-1/Miniforge3-Linux-x86_64.sh" \
     && bash /tmp/Miniforge3-Linux-x86_64.sh -b -p /opt/conda \
     && rm /tmp/Miniforge3-Linux-x86_64.sh
-
+RUN wget https://raw.githubusercontent.com/aqlaboratory/openfold-3/refs/heads/main/scripts/snakemake_msa/MSA_Snakefile
 ENV PATH=/opt/conda/bin:$PATH
 
 # Install environment based on BUILD_MODE
@@ -87,4 +87,4 @@ ENV LD_LIBRARY_PATH=/opt/conda/envs/of3-aln-env/lib:$LD_LIBRARY_PATH
 # Test stage - build on devel layer with test dependencies
 FROM devel AS test
 
-RUN wget https://raw.githubusercontent.com/aqlaboratory/openfold-3/refs/heads/main/scripts/snakemake_msa/MSA_Snakefile
+
