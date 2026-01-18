@@ -87,3 +87,4 @@ ENV LD_LIBRARY_PATH=/opt/conda/envs/of3-aln-env/lib:$LD_LIBRARY_PATH
 # Test stage - build on devel layer with test dependencies
 FROM devel AS test
 
+RUN wget https://raw.githubusercontent.com/aqlaboratory/openfold-3/refs/heads/main/scripts/snakemake_msa/MSA_Snakefile
