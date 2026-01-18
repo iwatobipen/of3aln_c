@@ -29,8 +29,8 @@ ENV PATH=/opt/conda/bin:$PATH
 # - lock: uses conda-lock for exact reproducible builds (training/production)
 # - yaml: uses mamba env create for flexible version resolution (development/testing)
 RUN wget -P /tmp https://raw.githubusercontent.com/aqlaboratory/openfold-3/refs/heads/main/scripts/snakemake_msa/aln_env.yml
-RUN mamba env create -f /tmp/aln_env.yml \
-    && mamba clean --all --yes \
+RUN mamba env create -f /tmp/aln_env.yml
+RUN mamba clean --all --yes \
     && conda clean --all --yes
 
 # Activate the of3-aln-env environment by default
