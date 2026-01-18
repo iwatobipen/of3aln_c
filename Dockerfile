@@ -69,10 +69,7 @@ RUN rm -rf /usr/local/cuda/doc \
 # Copy the entire conda environment
 COPY --from=builder /opt/conda /opt/conda
 
-# Copy CUTLASS
-COPY --from=builder /opt/cutlass /opt/cutlass
-
-# Activate the openfold3 environment by default
+# Activate the of3-aln-env environment by default
 ENV PATH=/opt/conda/envs/of3-aln-env/bin:/opt/conda/bin:$PATH
 ENV CONDA_PREFIX=/opt/conda/envs/of3-aln-env
 ENV CONDA_DEFAULT_ENV=of3-aln-env
@@ -82,7 +79,6 @@ RUN /opt/conda/bin/conda init bash \
     && echo "conda activate of3-aln-env" >> /root/.bashrc
 
 # Set environment variables
-ENV CUTLASS_PATH=/opt/cutlass
 ENV KMP_AFFINITY=none
 ENV LIBRARY_PATH=/opt/conda/envs/of3-aln-env/lib:$LIBRARY_PATH
 ENV LD_LIBRARY_PATH=/opt/conda/envs/of3-aln-env/lib:$LD_LIBRARY_PATH
