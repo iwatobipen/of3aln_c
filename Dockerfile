@@ -22,7 +22,6 @@ RUN wget -P /tmp \
     "https://github.com/conda-forge/miniforge/releases/download/25.11.0-1/Miniforge3-Linux-x86_64.sh" \
     && bash /tmp/Miniforge3-Linux-x86_64.sh -b -p /opt/conda \
     && rm /tmp/Miniforge3-Linux-x86_64.sh
-RUN wget https://raw.githubusercontent.com/aqlaboratory/openfold-3/refs/heads/main/scripts/snakemake_msa/MSA_Snakefile
 ENV PATH=/opt/conda/bin:$PATH
 
 # Install environment based on BUILD_MODE
@@ -74,7 +73,7 @@ ENV PATH=/opt/conda/envs/of3-aln-env/bin:/opt/conda/bin:$PATH
 ENV CONDA_PREFIX=/opt/conda/envs/of3-aln-env
 ENV CONDA_DEFAULT_ENV=of3-aln-env
 
-# Ensure interactive shells also activate openfold3
+# Ensure interactive shells also activate of3-aln-env
 RUN /opt/conda/bin/conda init bash \
     && echo "conda activate of3-aln-env" >> /root/.bashrc
 
